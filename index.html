@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="scrum-board-container">
+        <div class="board-title">
+            <h1>Kanban Board</h1>
+        </div>
+
+        <div class="flex">
+
+            <div class="scrum-board backlog">
+                <h2>Backlog</h2>
+                <div class="scrum-board-column" ondrop="drop(event)" ondragover="dragover(event)" id="backlog">
+                    <div class="scrum-task overflow" draggable="true" ondragstart="dragstart(event)" id="123">
+                        <span>Create Migration plan 1</span>
+                        <div class="scrum-task-description">A description of the task will be here</div>
+                        <div class="scrum-task-date">Due 20/04/2019</div>
+                        <div class="scrum-task-assignee">
+                            <span class="assignee">GH</span>
+                        </div>
+                    </div>
+
+                    <div class="scrum-task overflow" draggable="true" ondragstart="dragstart(event)" id="89">
+                        <span>Create Migration plan 2</span>
+                        <div class="scrum-task-description">A description of the task will be here</div>
+                        <div class="scrum-task-date">Due 20/04/2019</div>
+                        <div class="scrum-task-assignee">
+                            <span class="assignee"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scrum-board in-progress">
+                <h2>In progress</h2>
+                <div class="scrum-board-column" ondrop="drop(event)" ondragover="dragover(event)" id="in-progress">
+                    <div class="scrum-task overflow" draggable="true" ondragstart="dragstart(event)" id="423">
+                        <span>Create Migration plan 3</span>
+                        <div class="scrum-task-description">A description of the task will be here</div>
+                        <div class="scrum-task-date">Due 20/04/2019</div>
+                        <div class="scrum-task-assignee">
+                            <span class="assignee">GH</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scrum-board done">
+                <h2>Done</h2>
+                <div class="scrum-board-column" ondrop="drop(event)" ondragover="dragover(event)" id="done"></div>
+            </div>
+        </div>
+</body>
+
+
+<script src="./main.js"></script>
+</html>
