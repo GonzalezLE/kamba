@@ -10,16 +10,23 @@
 </head>
 
 <body>
+    <pre>
+        <code id="code">
+
+        </code>
+    </pre>
     <div class="scrum-board-container">
         <div class="board-title">
             <h1>Kanban Board</h1>
         </div>
 
-        <div class="flex">
+        <div class="flex" id="templa_kamba">
 
-            <div class="scrum-board backlog">
+            <!-- <div class="scrum-board">
                 <h2>Backlog</h2>
                 <div class="scrum-board-column" ondrop="drop(event)" ondragover="dragover(event)" id="backlog">
+
+
                     <div class="scrum-task overflow" draggable="true" ondragstart="dragstart(event)" id="123">
                         <span>Create Migration plan 1</span>
                         <div class="scrum-task-description">A description of the task will be here</div>
@@ -40,27 +47,117 @@
                 </div>
             </div>
 
-            <div class="scrum-board in-progress">
-                <h2>In progress</h2>
-                <div class="scrum-board-column" ondrop="drop(event)" ondragover="dragover(event)" id="in-progress">
-                    <div class="scrum-task overflow" draggable="true" ondragstart="dragstart(event)" id="423">
-                        <span>Create Migration plan 3</span>
-                        <div class="scrum-task-description">A description of the task will be here</div>
-                        <div class="scrum-task-date">Due 20/04/2019</div>
-                        <div class="scrum-task-assignee">
-                            <span class="assignee">GH</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
             
-            <div class="scrum-board done">
+
+            <div class="scrum-board">
                 <h2>Done</h2>
-                <div class="scrum-board-column" ondrop="drop(event)" ondragover="dragover(event)" id="done"></div>
-            </div>
+                <div class="scrum-board-column" ondrop="drop(event)" ondragover="dragover(event)" id="done">
+                
+                </div>
+            </div> -->
         </div>
 </body>
 
 
 <script src="./main.js"></script>
+
+
+<script>
+    // nombre del embudo 
+
+    // status_embudo
+    let status = [
+        {
+            uid: 'modulo1',
+            name: 'modulo1'
+        },
+        {
+            uid: 'modulo2',
+            name: 'modulo2'
+        },
+        {
+            uid: 'modulo3',
+            name: 'modulo3'
+        },
+        {
+            uid: 'modulo4',
+            name: 'modulo4'
+        }
+    ];
+
+    let items = [
+        {
+            id: 1,
+            modulo: 'modulo1',
+            data: 'lorem data -'
+        }, {
+            id: 2,
+            modulo: 'modulo2',
+            data: 'lorem data'
+        }, {
+            id: 3,
+            modulo: 'modulo3',
+            data: 'lorem data'
+        }, {
+            id: 4,
+            modulo: 'modulo4',
+            data: 'lorem data'
+        }
+    ]
+
+    document.querySelector('#code').innerHTML = JSON.stringify(status);
+
+
+    const template_item = (uid, name) => {
+        return `
+            <div class="scrum-board">
+                <h2>${name}</h2>
+                <div 
+                    class="scrum-board-column" 
+                    ondrop="drop(event)" 
+                    ondragover="dragover(event)" 
+                    id="${uid}"
+                >                
+                </div>
+            </div>
+        
+        `;
+    }
+
+    const template_item_task = (id,modulo,data ) => {
+
+        let template = `
+            <div 
+                class="scrum-task overflow" 
+                draggable="true" 
+                ondragstart="dragstart(event)"
+                id="${id}"
+            >
+                <span>Create Migration plan 1</span>
+                <div class="scrum-task-description">${data}</div>
+                <div class="scrum-task-date">Due 20/04/2019</div>
+                <div class="scrum-task-assignee">
+                    <span class="assignee">GH</span>
+                </div>
+            </div>
+        `;
+        
+        return template;
+    }
+
+    ui = '';
+    status.map(({ uid, name }) => {
+        ui += template_item(uid, name);
+    });
+    document.querySelector('#templa_kamba').innerHTML = ui;
+
+    items.map(({ id,modulo,data }) => {
+
+        let ui = template_item_task(id,modulo,data );
+        document.querySelector(`#${modulo}`).innerHTML += (ui)
+    })
+
+
+</script>
+
 </html>
